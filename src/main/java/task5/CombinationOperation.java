@@ -5,7 +5,7 @@ import java.util.Map;
 import java.util.SortedMap;
 import java.util.TreeMap;
 
-public class CombineTwoListsIntoMapOperation {
+public class CombinationOperation {
 
     public ArrayList<String> addToKeyList() {
         ArrayList<String> listOfKeys = new ArrayList<>();
