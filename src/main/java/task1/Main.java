@@ -4,7 +4,6 @@ public class Main {
 
     public static void main(String[] args) {
         DictionaryOperation dictionaryOperation = new DictionaryOperation();
-        System.out.println(dictionaryOperation.characterMap("djdjjdsbfhskaoaokiaso"));
-
+        System.out.println(dictionaryOperation.createDictionary("djdjjdsbfhskaoaokiaso"));
     }
 }

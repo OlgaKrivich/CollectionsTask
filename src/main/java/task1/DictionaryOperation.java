@@ -5,7 +5,7 @@ import java.util.TreeMap;
 
 public class DictionaryOperation {
 
-    public Map<Character, Integer> characterMap(String text) {
+    public Map<Character, Integer> createDictionary(String text) {
         char[] chars = text.toCharArray();
         Map<Character, Integer> charsMap = new TreeMap<>();
         for (int i = 0; i < chars.length; i++) {

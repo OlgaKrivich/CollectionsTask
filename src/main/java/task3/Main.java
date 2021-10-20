@@ -4,6 +4,6 @@ public class Main {
 
     public static void main(String[] args) {
         ReplaceOperation replaceOperation = new ReplaceOperation();
-        replaceOperation.replaceKeyAndValues(replaceOperation.createMap());
+        replaceOperation.replaceKeyWithValue(replaceOperation.createNonConvertedMap(5));
     }
 }

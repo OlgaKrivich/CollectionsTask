@@ -1,33 +1,38 @@
 package task3;
 
 import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Set;
+import java.util.Map.Entry;
+import org.apache.commons.lang3.RandomStringUtils;
 
 public class ReplaceOperation {
 
-    public Map<String, String> createMap() {
-        Map<String, String> keyValueMap = new HashMap<>();
-        keyValueMap.put("gjgj", "5");
-        keyValueMap.put("gkfgk", "8");
-        keyValueMap.put("sksk", "12");
-        keyValueMap.put("hkkh", "15");
-        return keyValueMap;
+    public <K, V> Map<? extends K, ? extends V> createNonConvertedMap(int numberOfSets) {
+        Map<K, V> nonConvertedMap = new HashMap<>();
+        for (int i = 0; i < numberOfSets; i++) {
+            String key = RandomStringUtils.randomNumeric(2);
+            String value = RandomStringUtils.randomNumeric(4);
+            nonConvertedMap.put((K) key, (V) value);
+        }
+        return nonConvertedMap;
     }
 
-    public Map<String, Collection<String>> replaceKeyAndValues(Map<String, String> keyValueMap) {
-        Set<String> keys = keyValueMap.keySet();
+    public <K, V> Map<V, Collection<K>> replaceKeyWithValue(Map<? extends K, ? extends V> map) {
 
-        Map<String, Collection<String>> valueKeyMap = new HashMap<>();
+        Map<V, Collection<K>> convertedMap = new HashMap<>();
 
-        for (Map.Entry<String, String> item : keyValueMap.entrySet()) {
-            valueKeyMap.put(item.getValue(), keys);
+        for (K key : map.keySet()) {
+            V valueConvertedMap = map.get(key);
+            Collection<K> keysConvertedMap = Collections.singletonList(key);
+            convertedMap.put(valueConvertedMap, keysConvertedMap);
         }
 
-        for (Map.Entry pairEntry : valueKeyMap.entrySet()) {
+        for (Entry<V, Collection<K>> pairEntry : convertedMap.entrySet()) {
             System.out.println(pairEntry.getKey() + " : " + pairEntry.getValue());
         }
-        return valueKeyMap;
+        return convertedMap;
     }
 }
+

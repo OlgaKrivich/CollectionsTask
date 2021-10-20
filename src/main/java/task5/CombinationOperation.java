@@ -4,33 +4,31 @@ import java.util.ArrayList;
 import java.util.Map;
 import java.util.SortedMap;
 import java.util.TreeMap;
+import org.apache.commons.lang3.RandomStringUtils;
 
 public class CombinationOperation {
 
-    public ArrayList<String> addToKeyList() {
-        ArrayList<String> listOfKeys = new ArrayList<>();
-        listOfKeys.add("jjf");
-        listOfKeys.add("fkf");
-        listOfKeys.add("dla");
-        listOfKeys.add("dhf");
-        listOfKeys.add("dhdkdkdf");
+    public <K> ArrayList<K> createListOfKeys(int keyNumber) {
+        ArrayList<K> listOfKeys = new ArrayList<>();
+        for (int i = 0; i < keyNumber; i++) {
+            K key = (K) RandomStringUtils.randomNumeric(4);
+            listOfKeys.add(key);
+        }
         return listOfKeys;
     }
 
-    public ArrayList<Integer> addToValueList() {
-        ArrayList<Integer> listOfValues = new ArrayList<>();
-        listOfValues.add(1);
-        listOfValues.add(2);
-        listOfValues.add(3);
-        listOfValues.add(4);
-        listOfValues.add(5);
-        listOfValues.add(6);
+    public <V> ArrayList<V> createListOfValues(int valueNumber) {
+        ArrayList<V> listOfValues = new ArrayList<>();
+        for (int i = 0; i < valueNumber; i++) {
+            V value = (V) RandomStringUtils.randomNumeric(5);
+            listOfValues.add(value);
+        }
         return listOfValues;
     }
 
-    public void combineTwoListsIntoMapVersion1(ArrayList<String> listOfKeys,
-            ArrayList<Integer> listOfValues) {
-        SortedMap<String, Integer> combinedMap = new TreeMap<>();
+    public <K, V> void combineTwoListsIntoMapVersion1(ArrayList<K> listOfKeys,
+            ArrayList<V> listOfValues) {
+        SortedMap<K, V> combinedMap = new TreeMap<>();
 
         if (listOfKeys.size() > listOfValues.size()) {
             for (int i = 0; i < listOfKeys.size(); i++) {
@@ -50,8 +48,8 @@ public class CombinationOperation {
 
     }
 
-    public void combineTwoListsIntoMapVersion2(ArrayList<String> listOfKeys,
-            ArrayList<Integer> listOfValues) {
+    public <K, V> void combineTwoListsIntoMapVersion2(ArrayList<K> listOfKeys,
+            ArrayList<V> listOfValues) {
 
         if (listOfKeys.size() > listOfValues.size()) {
             throw new IllegalArgumentException("Value is not enough for map");
